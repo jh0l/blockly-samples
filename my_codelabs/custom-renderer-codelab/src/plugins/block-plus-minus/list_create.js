@@ -151,6 +151,7 @@ const listCreateMutator = {
         this.itemCount_--;
         this.removeInput('ADD' + this.itemCount_);
         if (this.itemCount_ == 0) {
+            this.removeInput('EMPTY');
             this.topInput_ = this.appendDummyInput('EMPTY')
                 .appendField(createPlusField(), 'PLUS')
                 .appendField(Blockly.Msg['LISTS_CREATE_EMPTY_TITLE']);
@@ -166,7 +167,7 @@ const listCreateMutator = {
         if (!minusField && this.itemCount_ > 0) {
             this.topInput_.insertFieldAt(1, createMinusField(), 'MINUS');
         } else if (minusField && this.itemCount_ < 1) {
-            this.topInput_.removeField('MINUS');
+            this.topInput_.removeField('MINUS', true);
         }
     },
 };
@@ -177,7 +178,7 @@ const listCreateMutator = {
  */
 const listCreateHelper = function () {
     this.getInput('EMPTY').insertFieldAt(0, createPlusField(), 'PLUS');
-    this.updateShape_(3);
+    this.updateShape_(0);
 };
 
 Blockly.Extensions.registerMutator(

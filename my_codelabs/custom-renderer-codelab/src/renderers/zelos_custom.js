@@ -15,7 +15,7 @@ class CustomConstantProvider extends Blockly.zelos.ConstantProvider {
 
     init() {
         super.init();
-        this.CORNER_RADIUS = 15;
+        this.CORNER_RADIUS = 16;
         this.ROUNDED = super.makeSquared();
         this.CORNER_RADIUS = 5;
     }
